@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edifício Amazonas — SIM Arquitetura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#C9A96E;--line:rgba(201,169,110,0.28);--white:#F0EDE6;--muted:rgba(240,237,230,0.45);--sidebar:220px}
+html,body{height:100%;background:#0A0906;font-family:'Montserrat',sans-serif;overflow:hidden}
+.bg-main{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;filter:brightness(0.50) saturate(0.72) sepia(0.15)}
+.ow{position:fixed;inset:0;z-index:1;background:rgba(40,26,10,0.50)}
+.ob{position:fixed;bottom:0;left:0;right:var(--sidebar);height:62%;background:linear-gradient(to top,rgba(10,9,6,0.98) 0%,rgba(10,9,6,0.6) 45%,transparent 100%);z-index:2}
+.ol{position:fixed;inset:0;right:var(--sidebar);background:linear-gradient(to right,rgba(10,9,6,0.80) 0%,rgba(10,9,6,0.30) 40%,transparent 65%);z-index:2}
+.layout{display:flex;height:100vh;position:relative;z-index:10}
+.main{flex:1;display:grid;grid-template-rows:auto 1fr auto;padding:2.5rem 2rem 2.2rem;min-width:0}
+header{display:flex;align-items:flex-start;justify-content:space-between;opacity:0;animation:fadeDown 0.9s 0.2s forwards}
+.logo-img{height:86px;width:auto;mix-blend-mode:screen;opacity:0.94}
+.hr{text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.hy{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2rem;letter-spacing:0.15em;color:var(--gold);opacity:0.8;line-height:1}
+.hc{text-align:right;font-weight:200;font-size:7.5px;letter-spacing:0.28em;color:var(--muted);text-transform:uppercase;line-height:2}
+.hc strong{display:block;font-weight:300;font-size:10px;color:rgba(240,237,230,0.78);letter-spacing:0.18em}
+.hero{display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:1.8rem;opacity:0;animation:fadeUp 1s 0.55s forwards}
+.ey{font-weight:200;font-size:7.5px;letter-spacing:0.55em;color:var(--gold);text-transform:uppercase;margin-bottom:0.9rem}
+.ht{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.5rem,4.5vw,5rem);letter-spacing:0.2em;line-height:0.93;color:var(--white);text-transform:uppercase}
+.ht em{font-style:italic;color:var(--gold);display:block}
+.hr2{width:42px;height:0.5px;background:var(--gold);margin:1.2rem 0}
+.hd{font-weight:200;font-size:7.5px;letter-spacing:0.45em;color:var(--muted);text-transform:uppercase}
+.as{opacity:0;animation:fadeUp 1s 0.9s forwards}
+.al{font-weight:200;font-size:7px;letter-spacing:0.5em;color:var(--muted);text-transform:uppercase;margin-bottom:0.75rem;padding-bottom:0.6rem;border-bottom:0.5px solid var(--line)}
+.ag{display:grid;grid-template-columns:repeat(6,1fr);gap:3px}
+.amb{position:relative;height:110px;overflow:hidden;cursor:pointer;display:block;border:0.5px solid rgba(201,169,110,0.15)}
+.amb-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:grayscale(100%) brightness(0.58);transition:filter 0.7s,transform 0.7s}
+.amb:hover .amb-img{filter:grayscale(0%) brightness(0.85);transform:scale(1.07)}
+.amb-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,9,6,0.92) 0%,rgba(10,9,6,0.22) 55%,transparent 100%);transition:opacity 0.5s;z-index:2}
+.amb:hover .amb-overlay{opacity:0.55}
+.amb::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:width 0.5s;z-index:4}
+.amb:hover::after{width:100%}
+.amb-content{position:absolute;bottom:0;left:0;right:0;padding:0.55rem 0.6rem;z-index:3}
+.a-num{display:block;font-family:'Cormorant Garamond',serif;font-size:9px;letter-spacing:0.25em;color:rgba(240,237,230,0.30);transition:color 0.4s;margin-bottom:2px}
+.a-name{display:block;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:0.74rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(240,237,230,0.85);line-height:1.2;transition:color 0.4s}
+.a-arr{display:block;margin-top:2px;font-size:7px;letter-spacing:0.3em;color:transparent;text-transform:uppercase;transition:color 0.4s}
+.amb:hover .a-num{color:var(--gold)}.amb:hover .a-name{color:var(--white)}.amb:hover .a-arr{color:var(--gold)}
+.sidebar{width:var(--sidebar);flex-shrink:0;background:rgba(8,8,7,0.92);backdrop-filter:blur(12px);border-left:0.5px solid var(--line);display:flex;flex-direction:column;z-index:20;opacity:0;animation:fadeLeft 0.9s 1.2s forwards}
+.sb-header{padding:1.4rem 1.2rem 1rem;border-bottom:0.5px solid var(--line);flex-shrink:0}
+.sb-label{font-weight:200;font-size:7px;letter-spacing:0.45em;color:var(--muted);text-transform:uppercase;margin-bottom:0.4rem}
+.sb-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1rem;letter-spacing:0.15em;color:var(--white);text-transform:uppercase}
+.sb-title em{color:var(--gold);font-style:italic}
+.sb-docs{flex:1;overflow-y:auto;padding:0.6rem 0}
+.sb-docs::-webkit-scrollbar{width:2px}
+.sb-docs::-webkit-scrollbar-thumb{background:var(--line)}
+.doc-item{padding:0.7rem 1.2rem;border-bottom:0.5px solid rgba(201,169,110,0.08);transition:background 0.3s}
+.doc-item:hover{background:rgba(201,169,110,0.06)}
+.doc-num{font-family:'Cormorant Garamond',serif;font-size:9px;letter-spacing:0.25em;color:var(--gold);display:block;margin-bottom:3px}
+.doc-name{font-weight:200;font-size:9px;letter-spacing:0.12em;color:rgba(240,237,230,0.75);text-transform:uppercase;line-height:1.4;display:block;margin-bottom:8px}
+.doc-btns{display:flex;gap:5px}
+.doc-btn{flex:1;padding:5px 4px;background:none;border:0.5px solid var(--line);cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:200;font-size:7px;letter-spacing:0.3em;color:var(--muted);text-transform:uppercase;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:4px;transition:border-color 0.3s,color 0.3s,background 0.3s}
+.doc-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,169,110,0.08)}
+.doc-btn svg{width:9px;height:9px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0}
+.doc-btn.disabled{opacity:0.3;pointer-events:none}
+.sb-footer{padding:0.9rem 1.2rem;border-top:0.5px solid var(--line);font-weight:200;font-size:7px;letter-spacing:0.3em;color:var(--muted);text-transform:uppercase;text-align:center;flex-shrink:0}
+.modal{position:fixed;inset:0;z-index:200;background:rgba(6,6,5,0.97);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity 0.35s}
+.modal.active{opacity:1;pointer-events:all}
+.mb{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2.4rem;border-bottom:0.5px solid var(--line);flex-shrink:0}
+.mbl{display:flex;align-items:center;gap:1.2rem}
+.ml{height:38px;width:auto;mix-blend-mode:screen;opacity:0.9}
+.mt{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1.15rem;letter-spacing:0.22em;color:var(--white);text-transform:uppercase}
+.mt em{color:var(--gold);font-style:italic}
+.mc{font-weight:200;font-size:9px;letter-spacing:0.3em;color:var(--muted)}
+.bc{background:none;border:0.5px solid var(--line);padding:0.5rem 1.2rem;cursor:pointer;display:flex;align-items:center;gap:8px;font-family:'Montserrat',sans-serif;font-weight:200;font-size:8px;letter-spacing:0.4em;color:var(--muted);text-transform:uppercase;transition:border-color 0.3s,color 0.3s}
+.bc:hover{border-color:var(--gold);color:var(--gold)}
+.bc svg{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2}
+.ms{flex:1;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:1.5rem 5rem}
+.mi{max-width:100%;max-height:100%;object-fit:contain;transition:opacity 0.25s,transform 0.25s}
+.mi.fo{opacity:0;transform:scale(0.97)}
+.bn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(10,9,6,0.6);border:0.5px solid var(--line);width:44px;height:44px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color 0.3s,background 0.3s;z-index:10}
+.bn:hover{border-color:var(--gold);background:rgba(201,169,110,0.12)}
+.bn svg{width:16px;height:16px;stroke:var(--white);fill:none;stroke-width:1.5}
+.bp{left:1rem}.bx{right:1rem}
+.md{display:flex;justify-content:center;gap:8px;padding:1rem 0 1.5rem;flex-shrink:0}
+.dot{width:5px;height:5px;border-radius:50%;background:rgba(240,237,230,0.2);cursor:pointer;transition:background 0.3s,transform 0.3s}
+.dot.active{background:var(--gold);transform:scale(1.4)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeLeft{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+@media(max-width:1100px){html,body{overflow:auto}.layout{flex-direction:column;height:auto}.main{padding:1.8rem 1.4rem}.sidebar{width:100%;border-left:none;border-top:0.5px solid var(--line)}.ag{grid-template-columns:repeat(4,1fr)}.amb{height:100px}.ob,.ol{right:0}}
+@media(max-width:640px){.ag{grid-template-columns:repeat(2,1fr)}.ht{font-size:2.5rem}.logo-img{height:65px}}
+
+.sidebar{width:var(--sidebar);flex-shrink:0;background:rgba(8,8,7,0.92);backdrop-filter:blur(12px);border-left:0.5px solid var(--line);display:flex;flex-direction:column;z-index:20;opacity:0;animation:fadeLeft 0.9s 1.2s forwards}
+.sb-header{padding:1.4rem 1.2rem 1rem;border-bottom:0.5px solid var(--line);flex-shrink:0}
+.sb-label{font-weight:200;font-size:7px;letter-spacing:0.45em;color:var(--muted);text-transform:uppercase;margin-bottom:0.4rem}
+.sb-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1rem;letter-spacing:0.15em;color:var(--white);text-transform:uppercase}
+.sb-title em{color:var(--gold);font-style:italic}
+.sb-docs{flex:1;overflow-y:auto;padding:0.6rem 0}
+.sb-docs::-webkit-scrollbar{width:2px}
+.sb-docs::-webkit-scrollbar-thumb{background:var(--line)}
+.doc-item{padding:0.7rem 1.2rem;border-bottom:0.5px solid rgba(201,169,110,0.08);transition:background 0.3s}
+.doc-item:hover{background:rgba(201,169,110,0.06)}
+.doc-num{font-family:'Cormorant Garamond',serif;font-size:9px;letter-spacing:0.25em;color:var(--gold);display:block;margin-bottom:3px}
+.doc-name{font-weight:200;font-size:9px;letter-spacing:0.12em;color:rgba(240,237,230,0.75);text-transform:uppercase;line-height:1.4;display:block;margin-bottom:8px}
+.doc-btns{display:flex;gap:5px}
+.doc-btn{flex:1;padding:5px 4px;background:none;border:0.5px solid var(--line);cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:200;font-size:7px;letter-spacing:0.3em;color:var(--muted);text-transform:uppercase;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:4px;transition:border-color 0.3s,color 0.3s,background 0.3s}
+.doc-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,169,110,0.08)}
+.doc-btn svg{width:9px;height:9px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0}
+.sb-footer{padding:0.9rem 1.2rem;border-top:0.5px solid var(--line);font-weight:200;font-size:7px;letter-spacing:0.3em;color:var(--muted);text-transform:uppercase;text-align:center;flex-shrink:0}
+@keyframes fadeLeft{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+@media(max-width:1100px){.sidebar{width:100%;border-left:none;border-top:0.5px solid var(--line)}.ob,.ol{right:0}}
+.sb-art{display:flex;align-items:center;gap:10px;margin-top:1rem;padding:0.75rem 0.9rem;border:0.5px solid var(--gold);background:rgba(201,169,110,0.07);text-decoration:none;transition:background 0.3s}
+.site-link{display:inline-flex;align-items:center;gap:7px;color:var(--gold);text-decoration:none;font-weight:300;font-size:8px;letter-spacing:0.3em;text-transform:uppercase;border-bottom:0.5px solid transparent;padding-bottom:2px;transition:border-color .3s,opacity .3s}
+.site-link:hover{border-color:var(--gold)}
+.site-link svg{width:11px;height:11px;stroke:var(--gold);fill:none;stroke-width:1.4;flex-shrink:0}
+.hw{margin-top:0.9rem;text-align:right}
+.sb-footer .site-link{margin-bottom:0.55rem;font-size:7.5px}
+@media(max-width:768px){.hw{margin-top:0.6rem}.site-link{font-size:7px;letter-spacing:0.22em}}
+.sb-art+.sb-art{margin-top:0.5rem}
+.sb-art-t.sm{font-size:0.8rem;letter-spacing:0.1em;line-height:1.2}
+.sb-art:hover{background:rgba(201,169,110,0.16)}
+.sb-art-ic{width:26px;height:26px;border:0.5px solid var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sb-art-ic svg{width:12px;height:12px;stroke:var(--gold);fill:none;stroke-width:1.6}
+.sb-art-tx{display:flex;flex-direction:column;gap:3px;min-width:0}
+.sb-art-t{font-family:'Cormorant Garamond',serif;font-size:1rem;letter-spacing:0.25em;color:var(--gold);line-height:1}
+.sb-art-s{font-weight:200;font-size:6.5px;letter-spacing:0.25em;color:var(--muted);text-transform:uppercase;line-height:1.5}
+
+/* ===== Galeria: tela cheia, zoom e celular ===== */
+.mi{touch-action:none;user-select:none;-webkit-user-select:none;-webkit-user-drag:none;will-change:transform}
+.ms{touch-action:none}
+.bf svg{width:11px;height:11px}
+.fx{display:none;position:absolute;top:calc(env(safe-area-inset-top,0px) + 12px);right:calc(env(safe-area-inset-right,0px) + 12px);z-index:20;width:42px;height:42px;background:rgba(10,9,6,0.55);border:0.5px solid var(--line);align-items:center;justify-content:center;cursor:pointer}
+.fx svg{width:14px;height:14px;stroke:var(--white);fill:none;stroke-width:1.6}
+.fc{display:none;position:absolute;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 14px);transform:translateX(-50%);z-index:20;font-family:'Montserrat',sans-serif;font-weight:200;font-size:9px;letter-spacing:0.3em;color:rgba(240,237,230,0.7);background:rgba(10,9,6,0.5);padding:5px 12px;pointer-events:none}
+.rh{display:none;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:25;flex-direction:column;align-items:center;gap:10px;padding:1.1rem 1.4rem;background:rgba(10,9,6,0.78);border:0.5px solid var(--line);pointer-events:none;font-family:'Montserrat',sans-serif;font-weight:200;font-size:8px;letter-spacing:0.3em;color:var(--white);text-transform:uppercase;text-align:center;white-space:nowrap}
+.rh svg{width:26px;height:26px;stroke:var(--gold);fill:none;stroke-width:1.4}
+@keyframes rhFade{0%,70%{opacity:1}100%{opacity:0;visibility:hidden}}
+.mhint{display:none;text-align:center;font-family:'Montserrat',sans-serif;font-weight:200;font-size:7px;letter-spacing:0.28em;color:var(--muted);text-transform:uppercase;padding:0 1rem calc(env(safe-area-inset-bottom,0px) + 1rem);margin-top:-0.6rem}
+.modal{background:#060605!important}.modal.full{background:#000!important}
+.modal.full .mb,.modal.full .md,.modal.full .mhint{display:none}
+.modal.full .ms{padding:0}
+.modal.full .fx{display:flex}
+.modal.full .fc{display:block}
+.modal.full .bn{opacity:0.6}
+@media(hover:none){.mhint{display:block}}
+@media(max-width:768px){
+  .mb{padding:calc(env(safe-area-inset-top,0px) + 0.7rem) 1rem 0.7rem}
+  .ml{display:none}
+  .mt{font-size:0.85rem;letter-spacing:0.14em}
+  .mb>div:last-child{gap:0.5rem!important}
+  .mc{font-size:8px;letter-spacing:0.15em}
+  .bc{padding:0.55rem 0.7rem;letter-spacing:0.2em}
+  .bc span{display:none}
+  .ms{padding:0}
+  .bn{width:36px;height:36px}
+  .bp{left:0.4rem}.bx{right:0.4rem}
+  .md{padding:0.9rem 0 1rem}
+}
+@media(max-width:768px) and (orientation:portrait){.modal.full .rh{display:flex;animation:rhFade 3.2s forwards}}
+</style>
+</head>
+<body><script>if(sessionStorage.getItem("amazonas_ok")!=="1")location.replace("index.html");</script>
+<img class="bg-main" src="imagens/imagem-01.jpg" alt="">
+<div class="ow"></div><div class="ol"></div><div class="ob"></div>
+<div class="layout">
+  <div class="main">
+    <header>
+      <img class="logo-img" src="imagens/imagem-02.png" alt="SIM Arquitetura Executiva">
+      <div class="hr"><div class="hy">2026</div><div class="hc">Responsáveis pelo Projeto<strong>Silvia Moura</strong><strong>Andressa Murta</strong></div><div class="hw"><a class="site-link" href="https://simarquitetura.com.br/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/></svg>simarquitetura.com.br</a></div></div>
+    </header>
+    <div class="hero">
+      <p class="ey">Apresentação de Projeto · 2026</p>
+      <h1 class="ht">Edifício<br><em>Amazonas</em></h1>
+      <div class="hr2"></div>
+      <p class="hd">Selecione um ambiente para explorar</p>
+    </div>
+    <div class="as">
+      <p class="al">Ambientes do Projeto</p>
+      <div class="ag">
+<div class="amb" onclick="openGallery('fachada')"><img class="amb-img" src="imagens/imagem-03.jpg" alt="Fachada"><div class="amb-overlay"></div><div class="amb-content"><span class="a-num">01</span><span class="a-name">Fachada</span><span class="a-arr">Ver →</span></div></div>
+<div class="amb" onclick="openGallery('entrada-func')"><img class="amb-img" src="imagens/imagem-04.jpg" alt="Entrada Funcionários"><div class="amb-overlay"></div><div class="amb-content"><span class="a-num">02</span><span class="a-name">Entrada Funcionários</span><span class="a-arr">Ver →</span></div></div>
+<div class="amb" onclick="openGallery('garagem')"><img class="amb-img" src="imagens/imagem-05.jpg" alt="Garagem"><div class="amb-overlay"></div><div class="amb-content"><span class="a-num">03</span><span class="a-name">Garagem</span><span class="a-arr">Ver →</span></div></div>
+<div class="amb" onclick="openGallery('recepcao')"><img class="amb-img" src="imagens/imagem-06.jpg" alt="Recepção"><div class="amb-overlay"></div><div class="amb-content"><span class="a-num">04</span><span class="a-name">Recepção</span><span class="a-arr">Ver →</span></div></div>
+<div class="amb" onclick="openGallery('portaria')"><img class="amb-img" src="imagens/imagem-07.jpg" alt="Portaria"><div class="amb-overlay"></div><div class="amb-content"><span class="a-num">05</span><span class="a-name">Portaria</span><span class="a-arr">Ver →</span></div></div>
+<div class="amb" onclick="openGallery('almoxarife')"><img class="amb-img" src="imagens/imagem-08.jpg" alt="Almoxarifado"><div class="amb-overlay"></div><div class="amb-content"><span class="a-num">06</span><span class="a-name">Almoxarifado</span><span class="a-arr">Ver →</span></div></div>
+<div class="amb" onclick="openGallery('lobby')"><img class="amb-img" src="imagens/imagem-09.jpg" alt="Lobby"><div class="amb-overlay"></div><div class="amb-content"><span class="a-num">07</span><span class="a-name">Lobby</span><span class="a-arr">Ver →</span></div></div>
+<div class="amb" onclick="openGallery('area-verde')"><img class="amb-img" src="imagens/imagem-10.jpg" alt="Área Verde"><div class="amb-overlay"></div><div class="amb-content"><span class="a-num">08</span><span class="a-name">Área Verde</span><span class="a-arr">Ver →</span></div></div>
+<div class="amb" onclick="openGallery('hall-principal')"><img class="amb-img" src="imagens/imagem-11.jpg" alt="Hall Principal"><div class="amb-overlay"></div><div class="amb-content"><span class="a-num">09</span><span class="a-name">Hall Principal</span><span class="a-arr">Ver →</span></div></div>
+<div class="amb" onclick="openGallery('hall-elev-soc')"><img class="amb-img" src="imagens/imagem-12.jpg" alt="Hall Elev. Social"><div class="amb-overlay"></div><div class="amb-content"><span class="a-num">10</span><span class="a-name">Hall Elev. Social</span><span class="a-arr">Ver →</span></div></div>
+<div class="amb" onclick="openGallery('hall-elev-serv')"><img class="amb-img" src="imagens/imagem-13.jpg" alt="Hall Elev. Serviço"><div class="amb-overlay"></div><div class="amb-content"><span class="a-num">11</span><span class="a-name">Hall Elev. Serviço</span><span class="a-arr">Ver →</span></div></div></div></div>
+  </div>
+  <div class="sidebar">
+    <div class="sb-header">
+      <div class="sb-label">Documentos do Projeto</div>
+      <div class="sb-title">Edifício <em>Amazonas</em></div>
+      <a class="sb-art" href="https://drive.google.com/drive/folders/13ZrhP8rPOhZQttVwhHtA-pmSWSsoIzFP?usp=drive_link" target="_blank" rel="noopener">
+        <span class="sb-art-ic"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5"/><line x1="3.5" y1="10" x2="20.5" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/><polyline points="8.5 15 11 17.3 15.5 13"/></svg></span>
+        <span class="sb-art-tx"><span class="sb-art-t sm">PLANEJAMENTO DE OBRA</span><span class="sb-art-s">Cronograma · Acessar</span></span>
+      </a>
+      <a class="sb-art" href="https://drive.google.com/drive/folders/19qdypmxTTLQQAgo9q7auLAkXosKhdXF-?usp=drive_link" target="_blank" rel="noopener">
+        <span class="sb-art-ic"><svg viewBox="0 0 24 24"><path d="M12 3v12"/><polyline points="7 10 12 15 17 10"/><line x1="5" y1="20" x2="19" y2="20"/></svg></span>
+        <span class="sb-art-tx"><span class="sb-art-t">ART</span><span class="sb-art-s">Anotação de Resp. Técnica · Baixar</span></span>
+      </a>
+    </div>
+    <div class="sb-docs" id="sbDocs"></div>
+    <div class="sb-footer"><a class="site-link" href="https://simarquitetura.com.br/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/></svg>simarquitetura.com.br</a><br>SIM Arquitetura Executiva · 2026</div>
+  </div>
+
+  </div>
+<div class="modal" id="modal">
+  <div class="mb">
+    <div class="mbl"><img class="ml" src="imagens/imagem-02.png" alt="SIM"><div class="mt">Edifício <em id="mt2"></em></div></div>
+    <div style="display:flex;align-items:center;gap:1.5rem"><span class="mc" id="mc2"></span><button class="bc bf" onclick="toggleFull()" title="Tela cheia (F)"><svg viewBox="0 0 24 24"><polyline points="4 9 4 4 9 4"/><polyline points="20 9 20 4 15 4"/><polyline points="4 15 4 20 9 20"/><polyline points="20 15 20 20 15 20"/></svg><span>Tela cheia</span></button><button class="bc" onclick="closeGallery()"><svg viewBox="0 0 12 12"><line x1="1" y1="1" x2="11" y2="11"/><line x1="11" y1="1" x2="1" y2="11"/></svg><span>Fechar</span></button></div>
+  </div>
+  <div class="ms">
+    <button class="bn bp" onclick="nav(-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <img class="mi" id="mi2" src="" alt="">
+    <button class="fx" onclick="toggleFull(false)" title="Sair da tela cheia"><svg viewBox="0 0 24 24"><polyline points="9 4 9 9 4 9"/><polyline points="15 4 15 9 20 9"/><polyline points="9 20 9 15 4 15"/><polyline points="15 20 15 15 20 15"/></svg></button>
+    <div class="fc" id="fc2"></div>
+    <div class="rh"><svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="1.5"/><path d="M3 14a9 9 0 0 0 6 7"/><polyline points="6 21.5 9 21 8.4 18"/></svg>Gire o celular<br>para ampliar</div>
+    <button class="bn bx" onclick="nav(1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
+  </div>
+  <div class="md" id="md2"></div>
+  <div class="mhint">Toque na imagem para tela cheia · Pinça ou toque duplo para zoom</div>
+</div>
+<script>
+const NOMES={"fachada":"Fachada","entrada-func":"Entrada Funcionários","garagem":"Garagem","recepcao":"Recepção","portaria":"Portaria","almoxarife":"Almoxarifado","lobby":"Lobby","area-verde":"Área Verde","hall-principal":"Hall Principal","hall-elev-soc":"Hall Elev. Social","hall-elev-serv":"Hall Elev. Serviço"};
+const GALS={"fachada":["imagens/imagem-14.jpg","imagens/imagem-15.jpg"],"entrada-func":["imagens/imagem-16.jpg","imagens/imagem-17.jpg"],"garagem":["imagens/imagem-18.jpg"],"recepcao":["imagens/imagem-19.jpg","imagens/imagem-20.jpg"],"portaria":["imagens/imagem-21.jpg","imagens/imagem-22.jpg"],"almoxarife":["imagens/imagem-23.jpg"],"lobby":["imagens/imagem-24.jpg","imagens/imagem-25.jpg"],"area-verde":["imagens/imagem-26.jpg","imagens/imagem-27.jpg"],"hall-principal":["imagens/imagem-28.jpg","imagens/imagem-29.jpg"],"hall-elev-soc":["imagens/imagem-30.jpg","imagens/imagem-31.jpg"],"hall-elev-serv":["imagens/imagem-32.jpg","imagens/imagem-33.jpg"]};
+let cur='',idx=0;
+function openGallery(k){const imgs=GALS[k];if(!imgs||!imgs.length)return;cur=k;idx=0;document.getElementById('mt2').textContent=NOMES[k]||k;buildDots(imgs.length);show(0);document.getElementById('modal').classList.add('active');document.body.style.overflow='hidden';}
+function closeGallery(){document.getElementById('modal').classList.remove('active');document.body.style.overflow='';}
+function show(i){const imgs=GALS[cur];const el=document.getElementById('mi2');el.classList.add('fo');setTimeout(()=>{el.src=imgs[i];el.classList.remove('fo');},220);document.getElementById('mc2').textContent=(i+1)+' / '+imgs.length;document.querySelectorAll('#md2 .dot').forEach((d,j)=>d.classList.toggle('active',j===i));idx=i;}
+function nav(d){show((idx+d+GALS[cur].length)%GALS[cur].length);}
+function buildDots(n){const el=document.getElementById('md2');el.innerHTML='';for(let i=0;i<n;i++){const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>show(i);el.appendChild(d);}}
+document.addEventListener('keydown',e=>{if(!document.getElementById('modal').classList.contains('active'))return;if(e.key==='Escape')closeGallery();if(e.key==='ArrowLeft')nav(-1);if(e.key==='ArrowRight')nav(1);});
+const DOCS=[
+  {num:'01',nome:'Planta de Demolição e Construção',view:'https://drive.google.com/drive/folders/1Ww97Ah3m5FMUkQGG-0LtmfxEsXLdGHrB?usp=drive_link'},
+  {num:'02',nome:'Planta Baixa · Layout · Humanização',view:'https://drive.google.com/drive/folders/1G9MmrqDXD6MwbPWJw8Q8WmSRn1BxofR0?usp=drive_link'},
+  {num:'03',nome:'Planta de Vistas',view:'https://drive.google.com/drive/folders/13dR2xtMvJvKmdMeoZPIx6appQwFQUtXX?usp=drive_link'},
+  {num:'04',nome:'Planta de Paginação',view:'https://drive.google.com/drive/folders/1ZJ46ueWoJ7SmJ56Lw8tWT_9x7Oo1n-UP?usp=drive_link'},
+  {num:'05',nome:'Planta de Forro e Cobertura',view:'https://drive.google.com/drive/folders/1d1J3UEq4FvBdO8zee0MjN4IkXUJXl5tW?usp=drive_link'},
+  {num:'06',nome:'Planta de Iluminação',view:'https://drive.google.com/drive/folders/1EKK2_n57PutrHtz2gMQ1DkRDsChoT6ci?usp=drive_link'},
+  {num:'07',nome:'Quadros de Especificação',view:'https://drive.google.com/drive/folders/1CeIkx3rj_hnX3qYdcC7aV2d-E45YtE1w?usp=drive_link'},
+  {num:'08',nome:'Memorial',view:'https://drive.google.com/drive/folders/1s4Iqy1LvzGI5yHki9u2LEC01dUTIVfM8?usp=drive_link'},
+];
+const sb=document.getElementById('sbDocs');
+if(sb){DOCS.forEach(d=>{sb.innerHTML+=`<div class="doc-item"><span class="doc-num">${d.num}</span><span class="doc-name">${d.nome}</span><div class="doc-btns"><a class="doc-btn" href="${d.view}" target="_blank"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/></svg>Ver no Drive</a></div></div>`;});}
+</script>
+<script>
+(function(){
+const M=document.getElementById('modal'),IM=document.getElementById('mi2'),ST=document.querySelector('.ms'),FC=document.getElementById('fc2');
+let z=1,tx=0,ty=0,pinch=null,pan=null,moved=false,lastTap=0,tapT=null;
+function clampPan(){const mx=IM.clientWidth*(z-1)/2,my=IM.clientHeight*(z-1)/2;tx=Math.max(-mx,Math.min(mx,tx));ty=Math.max(-my,Math.min(my,ty));}
+function applyZ(anim){IM.style.transition=anim?'':'none';IM.style.transform=z>1?`translate(${tx}px,${ty}px) scale(${z})`:'';}
+window.resetZoom=function(){z=1;tx=0;ty=0;applyZ(true);};
+window.toggleFull=function(force){
+  const on=force!==undefined?force:!M.classList.contains('full');
+  M.classList.toggle('full',on);
+  try{
+    if(on&&!document.fullscreenElement&&M.requestFullscreen)M.requestFullscreen().catch(()=>{});
+    else if(on&&M.webkitRequestFullscreen&&!document.webkitFullscreenElement)M.webkitRequestFullscreen();
+    else if(!on&&document.fullscreenElement)document.exitFullscreen().catch(()=>{});
+  }catch(e){}
+  resetZoom();
+};
+document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&M.classList.contains('full')){M.classList.remove('full');resetZoom();}});
+const _show=show;show=function(i){resetZoom();_show(i);FC.textContent=(i+1)+' / '+GALS[cur].length;};
+const _close=closeGallery;closeGallery=function(){toggleFull(false);_close();};
+document.addEventListener('keydown',e=>{if(M.classList.contains('active')&&(e.key==='f'||e.key==='F'))toggleFull();});
+const dist=t=>Math.hypot(t[0].clientX-t[1].clientX,t[0].clientY-t[1].clientY);
+ST.addEventListener('touchstart',e=>{
+  if(e.target.closest('.bn,.fx'))return;
+  if(e.touches.length===2){pinch={d:dist(e.touches),z:z};pan=null;moved=true;}
+  else if(e.touches.length===1){const t=e.touches[0];pan={x:t.clientX,y:t.clientY,tx:tx,ty:ty};moved=false;}
+},{passive:true});
+ST.addEventListener('touchmove',e=>{
+  if(e.target.closest('.bn,.fx'))return;
+  e.preventDefault();
+  if(e.touches.length===2&&pinch){z=Math.max(1,Math.min(4,pinch.z*dist(e.touches)/pinch.d));clampPan();applyZ(false);}
+  else if(e.touches.length===1&&pan){const t=e.touches[0],dx=t.clientX-pan.x,dy=t.clientY-pan.y;
+    if(Math.abs(dx)>8||Math.abs(dy)>8)moved=true;
+    if(z>1){tx=pan.tx+dx;ty=pan.ty+dy;clampPan();applyZ(false);}}
+},{passive:false});
+ST.addEventListener('touchend',e=>{
+  if(e.target.closest('.bn,.fx'))return;
+  if(pinch){if(e.touches.length<2){pinch=null;if(z<1.05)resetZoom();
+      if(e.touches.length===1){const t=e.touches[0];pan={x:t.clientX,y:t.clientY,tx:tx,ty:ty};}}
+    return;}
+  if(!pan||e.touches.length)return;
+  const t=e.changedTouches[0],dx=t.clientX-pan.x,dy=t.clientY-pan.y;pan=null;
+  if(z===1&&Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)){nav(dx<0?1:-1);return;}
+  if(moved)return;
+  const now=Date.now();
+  if(now-lastTap<300){clearTimeout(tapT);lastTap=0;
+    if(z>1)resetZoom();else{z=2.5;const r=IM.getBoundingClientRect();tx=(r.left+r.width/2-t.clientX)*(z-1);ty=(r.top+r.height/2-t.clientY)*(z-1);clampPan();applyZ(true);}
+  }else{lastTap=now;tapT=setTimeout(()=>{if(z===1)toggleFull();},300);}
+});
+IM.addEventListener('dblclick',()=>toggleFull());
+})();
+</script>
+</body>
+</html>
