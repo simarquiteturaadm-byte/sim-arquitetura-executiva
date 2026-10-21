@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projeto Residencial Reforma AF — SIM Arquitetura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--gold:#C9A96E;--line:rgba(201,169,110,0.28);--white:#F0EDE6;--muted:rgba(240,237,230,0.45);--sidebar:220px}
+html,body{height:100%;background:#0A0906;font-family:'Montserrat',sans-serif;overflow:hidden}
+.bg-main{position:fixed;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;filter:brightness(0.50) saturate(0.72) sepia(0.15)}
+.ow{position:fixed;inset:0;z-index:1;background:rgba(40,26,10,0.50)}
+.ob{position:fixed;bottom:0;left:0;right:var(--sidebar);height:62%;background:linear-gradient(to top,rgba(10,9,6,0.98) 0%,rgba(10,9,6,0.6) 45%,transparent 100%);z-index:2}
+.ol{position:fixed;inset:0;right:var(--sidebar);background:linear-gradient(to right,rgba(10,9,6,0.80) 0%,rgba(10,9,6,0.30) 40%,transparent 65%);z-index:2}
+.layout{display:flex;height:100vh;position:relative;z-index:10}
+.main{flex:1;display:grid;grid-template-rows:auto 1fr auto;padding:2.5rem 2rem 2.2rem;min-width:0}
+header{display:flex;align-items:flex-start;justify-content:space-between;opacity:0;animation:fadeDown 0.9s 0.2s forwards}
+.logo-img{height:86px;width:auto;mix-blend-mode:screen;opacity:0.94}
+.hr{text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.hy{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2rem;letter-spacing:0.15em;color:var(--gold);opacity:0.8;line-height:1}
+.hc{text-align:right;font-weight:200;font-size:7.5px;letter-spacing:0.28em;color:var(--muted);text-transform:uppercase;line-height:2}
+.hc strong{display:block;font-weight:300;font-size:10px;color:rgba(240,237,230,0.78);letter-spacing:0.18em}
+.hero{display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:1.8rem;opacity:0;animation:fadeUp 1s 0.55s forwards}
+.ey{font-weight:200;font-size:7.5px;letter-spacing:0.55em;color:var(--gold);text-transform:uppercase;margin-bottom:0.9rem}
+.ht{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.5rem,4.5vw,5rem);letter-spacing:0.2em;line-height:0.93;color:var(--white);text-transform:uppercase}
+.ht em{font-style:italic;color:var(--gold);display:block}
+.hr2{width:42px;height:0.5px;background:var(--gold);margin:1.2rem 0}
+.hd{font-weight:200;font-size:7.5px;letter-spacing:0.45em;color:var(--muted);text-transform:uppercase}
+.as{opacity:0;animation:fadeUp 1s 0.9s forwards}
+.al{font-weight:200;font-size:7px;letter-spacing:0.5em;color:var(--muted);text-transform:uppercase;margin-bottom:0.75rem;padding-bottom:0.6rem;border-bottom:0.5px solid var(--line)}
+.ag{display:grid;grid-template-columns:repeat(4,1fr);gap:3px}
+.amb.empty{background:rgba(201,169,110,0.05);cursor:default}
+.amb.empty .a-arr{color:rgba(201,169,110,0.55)}
+.amb.link{background:rgba(201,169,110,0.05)}
+.amb.link .a-arr{color:rgba(201,169,110,0.75)}
+.amb{position:relative;height:118px;overflow:hidden;cursor:pointer;display:block;border:0.5px solid rgba(201,169,110,0.15)}
+.amb-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:grayscale(100%) brightness(0.58);transition:filter 0.7s,transform 0.7s}
+.amb:hover .amb-img{filter:grayscale(0%) brightness(0.85);transform:scale(1.07)}
+.amb-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,9,6,0.92) 0%,rgba(10,9,6,0.22) 55%,transparent 100%);transition:opacity 0.5s;z-index:2}
+.amb:hover .amb-overlay{opacity:0.55}
+.amb::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:width 0.5s;z-index:4}
+.amb:hover::after{width:100%}
+.amb-content{position:absolute;bottom:0;left:0;right:0;padding:0.55rem 0.6rem;z-index:3}
+.a-num{display:block;font-family:'Cormorant Garamond',serif;font-size:9px;letter-spacing:0.25em;color:rgba(240,237,230,0.30);transition:color 0.4s;margin-bottom:2px}
+.a-name{display:block;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:0.74rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(240,237,230,0.85);line-height:1.2;transition:color 0.4s}
+.a-arr{display:block;margin-top:2px;font-size:7px;letter-spacing:0.3em;color:transparent;text-transform:uppercase;transition:color 0.4s}
+.amb:hover .a-num{color:var(--gold)}.amb:hover .a-name{color:var(--white)}.amb:hover .a-arr{color:var(--gold)}
+.sidebar{width:var(--sidebar);flex-shrink:0;background:rgba(8,8,7,0.92);backdrop-filter:blur(12px);border-left:0.5px solid var(--line);display:flex;flex-direction:column;z-index:20;opacity:0;animation:fadeLeft 0.9s 1.2s forwards}
+.sb-header{padding:1.4rem 1.2rem 1rem;border-bottom:0.5px solid var(--line);flex-shrink:0}
+.sb-label{font-weight:200;font-size:7px;letter-spacing:0.45em;color:var(--muted);text-transform:uppercase;margin-bottom:0.4rem}
+.sb-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1rem;letter-spacing:0.15em;color:var(--white);text-transform:uppercase}
+.sb-title em{color:var(--gold);font-style:italic}
+.sb-docs{flex:1;overflow-y:auto;padding:0.6rem 0}
+.sb-docs::-webkit-scrollbar{width:2px}
+.sb-docs::-webkit-scrollbar-thumb{background:var(--line)}
+.doc-item{padding:0.7rem 1.2rem;border-bottom:0.5px solid rgba(201,169,110,0.08);transition:background 0.3s}
+.doc-item:hover{background:rgba(201,169,110,0.06)}
+.doc-num{font-family:'Cormorant Garamond',serif;font-size:9px;letter-spacing:0.25em;color:var(--gold);display:block;margin-bottom:3px}
+.doc-name{font-weight:200;font-size:9px;letter-spacing:0.12em;color:rgba(240,237,230,0.75);text-transform:uppercase;line-height:1.4;display:block;margin-bottom:8px}
+.doc-btns{display:flex;gap:5px}
+.doc-btn{flex:1;padding:5px 4px;background:none;border:0.5px solid var(--line);cursor:pointer;font-family:'Montserrat',sans-serif;font-weight:200;font-size:7px;letter-spacing:0.3em;color:var(--muted);text-transform:uppercase;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:4px;transition:border-color 0.3s,color 0.3s,background 0.3s}
+.doc-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,169,110,0.08)}
+.doc-btn svg{width:9px;height:9px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0}
+.doc-btn.disabled{opacity:0.3;pointer-events:none}
+.sb-footer{padding:0.9rem 1.2rem;border-top:0.5px solid var(--line);font-weight:200;font-size:7px;letter-spacing:0.3em;color:var(--muted);text-transform:uppercase;text-align:center;flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:0.55rem}
+.sb-site{display:flex;align-items:center;gap:7px;color:var(--gold);text-decoration:none;font-size:8px;letter-spacing:0.3em;transition:opacity 0.3s}
+.sb-site:hover{opacity:0.7}
+.sb-site svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:1.5}
+.sb-feat{box-sizing:border-box;padding:1rem 1.2rem;display:flex;flex-direction:column;gap:0.7rem;border-bottom:0.5px solid var(--line);flex-shrink:0}
+.feat{box-sizing:border-box;width:100%;min-width:0;display:flex;align-items:center;gap:0.7rem;padding:0.8rem 0.7rem;border:0.5px solid var(--gold);background:rgba(201,169,110,0.05);text-decoration:none;transition:background 0.3s}
+.feat:hover{background:rgba(201,169,110,0.12)}
+.feat.disabled{cursor:default}
+.feat.disabled:hover{background:rgba(201,169,110,0.05)}
+.feat-ic{width:30px;height:30px;flex-shrink:0;border:0.5px solid var(--gold);display:flex;align-items:center;justify-content:center;color:var(--gold)}
+.feat-ic svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.5}
+.feat-t{display:block;overflow-wrap:break-word;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:0.95rem;letter-spacing:0.12em;line-height:1.1;color:var(--gold);text-transform:uppercase;margin-bottom:4px}
+.feat-s{display:block;font-weight:200;font-size:7px;letter-spacing:0.25em;line-height:1.5;color:var(--muted);text-transform:uppercase}
+.modal{position:fixed;inset:0;z-index:200;background:rgba(6,6,5,0.97);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity 0.35s}
+.modal.active{opacity:1;pointer-events:all}
+.mb{display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2.4rem;border-bottom:0.5px solid var(--line);flex-shrink:0}
+.mbl{display:flex;align-items:center;gap:1.2rem}
+.ml{height:38px;width:auto;mix-blend-mode:screen;opacity:0.9}
+.mt{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1.15rem;letter-spacing:0.22em;color:var(--white);text-transform:uppercase}
+.mt em{color:var(--gold);font-style:italic}
+.mc{font-weight:200;font-size:9px;letter-spacing:0.3em;color:var(--muted)}
+.bc{background:none;border:0.5px solid var(--line);padding:0.5rem 1.2rem;cursor:pointer;display:flex;align-items:center;gap:8px;font-family:'Montserrat',sans-serif;font-weight:200;font-size:8px;letter-spacing:0.4em;color:var(--muted);text-transform:uppercase;transition:border-color 0.3s,color 0.3s}
+.bc:hover{border-color:var(--gold);color:var(--gold)}
+.bc svg{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2}
+.ms{flex:1;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:1.5rem 5rem}
+.mi{max-width:100%;max-height:100%;object-fit:contain;transition:opacity 0.25s,transform 0.25s}
+.mi.fo{opacity:0;transform:scale(0.97)}
+.bn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(10,9,6,0.6);border:0.5px solid var(--line);width:44px;height:44px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color 0.3s,background 0.3s;z-index:10}
+.bn:hover{border-color:var(--gold);background:rgba(201,169,110,0.12)}
+.bn svg{width:16px;height:16px;stroke:var(--white);fill:none;stroke-width:1.5}
+.bp{left:1rem}.bx{right:1rem}
+.md{display:flex;justify-content:center;gap:8px;padding:1rem 0 1.5rem;flex-shrink:0}
+.dot{width:5px;height:5px;border-radius:50%;background:rgba(240,237,230,0.2);cursor:pointer;transition:background 0.3s,transform 0.3s}
+.dot.active{background:var(--gold);transform:scale(1.4)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeLeft{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+</style>
+</head>
+<body>
+<img class="bg-main" src="imagens/imagem-01.jpg" alt="">
+<div class="ow"></div><div class="ol"></div><div class="ob"></div>
+<div class="layout">
+  <div class="main">
+    <header>
+      <img class="logo-img" src="imagens/imagem-02.png" alt="SIM Arquitetura Executiva">
+      <div class="hr"><div class="hy">2026</div><div class="hc">Responsáveis pelo Projeto<strong>Silvia Moura</strong><strong>Andressa Murta</strong></div></div>
+    </header>
+    <div class="hero">
+      <p class="ey">Projeto Residencial · 2026</p>
+      <h1 class="ht">Reforma<br><em>AF</em></h1>
+      <div class="hr2"></div>
+      <p class="hd">Selecione um ambiente para explorar</p>
+    </div>
+    <div class="as">
+      <p class="al">Ambientes do Projeto</p>
+      <div class="ag">
+<div class="amb" onclick="openGallery('fachada')"><img class="amb-img" src="imagens/imagem-03.jpg" alt="Fachada"><div class="amb-overlay"></div><div class="amb-content"><span class="a-num">01</span><span class="a-name">Fachada</span><span class="a-arr">Ver imagem</span></div></div>
+<div class="amb" onclick="openGallery('garagem-varanda')"><img class="amb-img" src="imagens/imagem-04.jpg" alt="Garagem / Varanda"><div class="amb-overlay"></div><div class="amb-content"><span class="a-num">02</span><span class="a-name">Garagem / Varanda</span><span class="a-arr">Ver imagem</span></div></div>
+<div class="amb" onclick="openGallery('jantar-cozinha')"><img class="amb-img" src="imagens/imagem-05.jpg" alt="Sala de Jantar / Cozinha"><div class="amb-overlay"></div><div class="amb-content"><span class="a-num">03</span><span class="a-name">Sala de Jantar / Cozinha</span><span class="a-arr">Ver imagem</span></div></div>
+<div class="amb" onclick="openGallery('sala-tv')"><img class="amb-img" src="imagens/imagem-06.jpg" alt="Sala de TV"><div class="amb-overlay"></div><div class="amb-content"><span class="a-num">04</span><span class="a-name">Sala de TV</span><span class="a-arr">Ver imagem</span></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="sidebar">
+    <div class="sb-header">
+      <div class="sb-label">Documentos do Projeto</div>
+      <div class="sb-title">Reforma <em>AF</em></div>
+    </div>
+    <div class="sb-feat" id="sbFeat"></div>
+    <div class="sb-docs" id="sbDocs"></div>
+    <div class="sb-footer">
+      <a class="sb-site" href="https://simarquitetura.com.br" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>simarquitetura.com.br</a>
+      <span>SIM Arquitetura Executiva · 2026</span>
+    </div>
+  </div>
+</div>
+<div class="modal" id="modal">
+  <div class="mb">
+    <div class="mbl"><img class="ml" src="imagens/imagem-02.png" alt="SIM"><div class="mt">Reforma AF · <em id="mt2"></em></div></div>
+    <div style="display:flex;align-items:center;gap:1.5rem"><span class="mc" id="mc2"></span><button class="bc" onclick="closeGallery()"><svg viewBox="0 0 12 12"><line x1="1" y1="1" x2="11" y2="11"/><line x1="11" y1="1" x2="1" y2="11"/></svg>Fechar</button></div>
+  </div>
+  <div class="ms">
+    <button class="bn bp" onclick="nav(-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <img class="mi" id="mi2" src="" alt="">
+    <button class="bn bx" onclick="nav(1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
+  </div>
+  <div class="md" id="md2"></div>
+</div>
+<script>
+const NOMES={"fachada": "Fachada", "garagem-varanda": "Garagem / Varanda", "jantar-cozinha": "Sala de Jantar / Cozinha", "sala-tv": "Sala de TV"};
+const GALS={"fachada": ["imagens/imagem-07.jpg"], "garagem-varanda": ["imagens/imagem-08.jpg"], "jantar-cozinha": ["imagens/imagem-09.jpg"], "sala-tv": ["imagens/imagem-10.jpg"]};
+let cur='',idx=0;
+function openGallery(k){const imgs=GALS[k];if(!imgs||!imgs.length)return;cur=k;idx=0;document.getElementById('mt2').textContent=NOMES[k]||k;buildDots(imgs.length);show(0);document.getElementById('modal').classList.add('active');document.body.style.overflow='hidden';}
+function closeGallery(){document.getElementById('modal').classList.remove('active');document.body.style.overflow='';}
+function show(i){const imgs=GALS[cur];const el=document.getElementById('mi2');el.classList.add('fo');setTimeout(()=>{el.src=imgs[i];el.classList.remove('fo');},220);document.getElementById('mc2').textContent=(i+1)+' / '+imgs.length;document.querySelectorAll('#md2 .dot').forEach((d,j)=>d.classList.toggle('active',j===i));idx=i;}
+function nav(d){show((idx+d+GALS[cur].length)%GALS[cur].length);}
+function buildDots(n){const el=document.getElementById('md2');el.innerHTML='';for(let i=0;i<n;i++){const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>show(i);el.appendChild(d);}}
+document.addEventListener('keydown',e=>{if(!document.getElementById('modal').classList.contains('active'))return;if(e.key==='Escape')closeGallery();if(e.key==='ArrowLeft')nav(-1);if(e.key==='ArrowRight')nav(1);});
+const DOCS=[
+  {num:"01",nome:"Planta de Demolição e Construção",view:"https://drive.google.com/drive/folders/1JcQ9zqorfOO3qAXlHwCjWWzfpO93HKsC",download:"#"},
+  {num:"02",nome:"Planta Baixa · Layout · Humanização",view:"https://drive.google.com/drive/folders/1W1EJN8h7DM2C8NPP41pHVb9pKFFjpoiD",download:"#"},
+  {num:"03",nome:"Planta de Vistas",view:"https://drive.google.com/drive/folders/1FrPPVQYLwsihcpWszQnqdcm86f05WXSH",download:"#"},
+  {num:"04",nome:"Planta de Paginação",view:"https://drive.google.com/drive/folders/1X6z2Rh0pLP-bMdFiZJEkdh9J2sz3rZ9U",download:"#"},
+  {num:"05",nome:"Planta de Forro / Cobertura",view:"https://drive.google.com/drive/folders/1fdhEGi2TWdMDMDqwmAgZkjD_dnoxqpct",download:"#"},
+  {num:"06",nome:"Pontos Elétricos",view:"https://drive.google.com/drive/folders/1grmiYe17yFFKXWJtDEnf9LEIEe3j4EUq",download:"#"},
+  {num:"07",nome:"Quadros de Especificação",view:"https://drive.google.com/drive/folders/165a-shwXHyhH5GpS1AyhHKashsQLz3ix",download:"#"},
+  {num:"08",nome:"Memorial",view:"https://drive.google.com/drive/folders/1TtJM35Lv4AUp0dxvREKjDJSqItCD2-Hh",download:"#"},
+];
+// Botões em destaque — troque "#" pelo link de cada um
+const FEAT=[
+  {titulo:"Orçamento de Obra",sub:"Planilha de custos · Acessar",link:"#",icone:"orcamento"},
+  {titulo:"ART",sub:"Anotação de Resp. Técnica · Baixar",link:"#",icone:"download"},
+];
+const ICONES={
+  orcamento:'<svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="1"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="16" y2="18"/></svg>',
+  download:'<svg viewBox="0 0 24 24"><path d="M12 4v11"/><polyline points="7 10 12 15 17 10"/><line x1="5" y1="20" x2="19" y2="20"/></svg>'
+};
+const sf=document.getElementById('sbFeat');
+FEAT.forEach(f=>{
+  const has=f.link!=='#';
+  sf.innerHTML+=`<a class="feat${has?'':' disabled'}" ${has?`href="${f.link}" target="_blank" rel="noopener"`:''}><span class="feat-ic">${ICONES[f.icone]}</span><span><span class="feat-t">${f.titulo}</span><span class="feat-s">${f.sub}</span></span></a>`;
+});
+const sb=document.getElementById('sbDocs');
+DOCS.forEach(d=>{
+  const has=d.view!=='#';
+  sb.innerHTML+=`<div class="doc-item"><span class="doc-num">${d.num}</span><span class="doc-name">${d.nome}</span><div class="doc-btns"><a class="doc-btn${has?'':' disabled'}" href="${d.view}" target="_blank"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/></svg>Ver no Drive</a></div></div>`;
+});
+</script>
+</body>
+</html>
