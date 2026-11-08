@@ -85,8 +85,52 @@ header{display:flex;align-items:flex-start;justify-content:space-between;opacity
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeLeft{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
-@media(max-width:1100px){html,body{overflow:auto}.layout{flex-direction:column;height:auto}.main{padding:1.8rem 1.4rem}.sidebar{width:100%;border-left:none;border-top:0.5px solid var(--line)}.ag{grid-template-columns:repeat(4,1fr)}.amb{height:100px}.ob,.ol{right:0}}
-@media(max-width:640px){.ag{grid-template-columns:repeat(2,1fr)}.ht{font-size:2.5rem}.logo-img{height:65px}}
+@media(max-width:1100px){
+  html,body{overflow:auto;height:auto}
+  .layout{flex-direction:column;height:auto}
+  .main{padding:1.8rem 1.4rem}
+  .sidebar{width:100%;border-left:none;border-top:0.5px solid var(--line);animation:none;opacity:1}
+  .ag{grid-template-columns:repeat(4,1fr)}
+  .amb{height:120px}
+  .ob,.ol{right:0}
+  .bg-main{position:fixed}
+  .whatsapp-fab{right:1.2rem;bottom:1.5rem}
+}
+@media(max-width:768px){
+  html,body{overflow:auto;height:auto}
+  .layout{flex-direction:column;height:auto}
+  .main{padding:1.4rem 1rem 1.5rem;min-height:100vh}
+  .bg-main{position:fixed;height:100vh}
+  .ow,.ob,.ol{position:fixed;right:0}
+  header{opacity:1;animation:none;padding-bottom:1rem}
+  .logo-img{height:60px}
+  .hy{font-size:1.4rem}
+  .hero{opacity:1;animation:none;padding-bottom:1.2rem}
+  .ht{font-size:clamp(2rem,8vw,3.2rem)}
+  .as{opacity:1;animation:none}
+  .al{font-size:7px;letter-spacing:0.4em;margin-bottom:0.6rem}
+  .ag{grid-template-columns:repeat(2,1fr);gap:4px}
+  .amb{height:130px}
+  .a-name{font-size:0.72rem}
+  .sidebar{width:100%;border-left:none;border-top:0.5px solid var(--line);animation:none;opacity:1;max-height:none}
+  .sb-docs{overflow:visible}
+  .sb-header{padding:1rem}
+  .doc-item{padding:0.75rem 1rem}
+  .whatsapp-fab{right:1rem;bottom:1.2rem}
+  .whatsapp-fab a{font-size:8px;padding:0.6rem 0.9rem 0.6rem 0.75rem}
+  .simia-launch{left:14px;bottom:14px}
+}
+@media(max-width:420px){
+  .main{padding:1rem 0.75rem 1.2rem}
+  .ag{grid-template-columns:repeat(2,1fr);gap:3px}
+  .amb{height:110px}
+  .logo-img{height:50px}
+  .ht{font-size:1.9rem;letter-spacing:0.12em}
+  .hc{font-size:6.5px}
+  .hy{font-size:1.2rem}
+  .whatsapp-fab a span,
+  .whatsapp-fab a{gap:7px;padding:0.55rem 0.8rem}
+}
 
 .sidebar{width:var(--sidebar);flex-shrink:0;background:rgba(8,8,7,0.92);backdrop-filter:blur(12px);border-left:0.5px solid var(--line);display:flex;flex-direction:column;z-index:20;opacity:0;animation:fadeLeft 0.9s 1.2s forwards}
 .sb-header{padding:1.4rem 1.2rem 1rem;border-bottom:0.5px solid var(--line);flex-shrink:0}
@@ -106,55 +150,7 @@ header{display:flex;align-items:flex-start;justify-content:space-between;opacity
 .doc-btn svg{width:9px;height:9px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0}
 .sb-footer{padding:0.9rem 1.2rem;border-top:0.5px solid var(--line);font-weight:200;font-size:7px;letter-spacing:0.3em;color:var(--muted);text-transform:uppercase;text-align:center;flex-shrink:0}
 @keyframes fadeLeft{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
-@media(max-width:1100px){.sidebar{width:100%;border-left:none;border-top:0.5px solid var(--line)}.ob,.ol{right:0}}
-.sb-art{display:flex;align-items:center;gap:10px;margin-top:1rem;padding:0.75rem 0.9rem;border:0.5px solid var(--gold);background:rgba(201,169,110,0.07);text-decoration:none;transition:background 0.3s}
-.site-link{display:inline-flex;align-items:center;gap:7px;color:var(--gold);text-decoration:none;font-weight:300;font-size:8px;letter-spacing:0.3em;text-transform:uppercase;border-bottom:0.5px solid transparent;padding-bottom:2px;transition:border-color .3s,opacity .3s}
-.site-link:hover{border-color:var(--gold)}
-.site-link svg{width:11px;height:11px;stroke:var(--gold);fill:none;stroke-width:1.4;flex-shrink:0}
-.hw{margin-top:0.9rem;text-align:right}
-.sb-footer .site-link{margin-bottom:0.55rem;font-size:7.5px}
-@media(max-width:768px){.hw{margin-top:0.6rem}.site-link{font-size:7px;letter-spacing:0.22em}}
-.sb-art+.sb-art{margin-top:0.5rem}
-.sb-art-t.sm{font-size:0.8rem;letter-spacing:0.1em;line-height:1.2}
-.sb-art:hover{background:rgba(201,169,110,0.16)}
-.sb-art-ic{width:26px;height:26px;border:0.5px solid var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.sb-art-ic svg{width:12px;height:12px;stroke:var(--gold);fill:none;stroke-width:1.6}
-.sb-art-tx{display:flex;flex-direction:column;gap:3px;min-width:0}
-.sb-art-t{font-family:'Cormorant Garamond',serif;font-size:1rem;letter-spacing:0.25em;color:var(--gold);line-height:1}
-.sb-art-s{font-weight:200;font-size:6.5px;letter-spacing:0.25em;color:var(--muted);text-transform:uppercase;line-height:1.5}
 
-/* ===== Galeria: tela cheia, zoom e celular ===== */
-.mi{touch-action:none;user-select:none;-webkit-user-select:none;-webkit-user-drag:none;will-change:transform}
-.ms{touch-action:none}
-.bf svg{width:11px;height:11px}
-.fx{display:none;position:absolute;top:calc(env(safe-area-inset-top,0px) + 12px);right:calc(env(safe-area-inset-right,0px) + 12px);z-index:20;width:42px;height:42px;background:rgba(10,9,6,0.55);border:0.5px solid var(--line);align-items:center;justify-content:center;cursor:pointer}
-.fx svg{width:14px;height:14px;stroke:var(--white);fill:none;stroke-width:1.6}
-.fc{display:none;position:absolute;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 14px);transform:translateX(-50%);z-index:20;font-family:'Montserrat',sans-serif;font-weight:200;font-size:9px;letter-spacing:0.3em;color:rgba(240,237,230,0.7);background:rgba(10,9,6,0.5);padding:5px 12px;pointer-events:none}
-.rh{display:none;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:25;flex-direction:column;align-items:center;gap:10px;padding:1.1rem 1.4rem;background:rgba(10,9,6,0.78);border:0.5px solid var(--line);pointer-events:none;font-family:'Montserrat',sans-serif;font-weight:200;font-size:8px;letter-spacing:0.3em;color:var(--white);text-transform:uppercase;text-align:center;white-space:nowrap}
-.rh svg{width:26px;height:26px;stroke:var(--gold);fill:none;stroke-width:1.4}
-@keyframes rhFade{0%,70%{opacity:1}100%{opacity:0;visibility:hidden}}
-.mhint{display:none;text-align:center;font-family:'Montserrat',sans-serif;font-weight:200;font-size:7px;letter-spacing:0.28em;color:var(--muted);text-transform:uppercase;padding:0 1rem calc(env(safe-area-inset-bottom,0px) + 1rem);margin-top:-0.6rem}
-.modal{background:#060605!important}.modal.full{background:#000!important}
-.modal.full .mb,.modal.full .md,.modal.full .mhint{display:none}
-.modal.full .ms{padding:0}
-.modal.full .fx{display:flex}
-.modal.full .fc{display:block}
-.modal.full .bn{opacity:0.6}
-@media(hover:none){.mhint{display:block}}
-@media(max-width:768px){
-  .mb{padding:calc(env(safe-area-inset-top,0px) + 0.7rem) 1rem 0.7rem}
-  .ml{display:none}
-  .mt{font-size:0.85rem;letter-spacing:0.14em}
-  .mb>div:last-child{gap:0.5rem!important}
-  .mc{font-size:8px;letter-spacing:0.15em}
-  .bc{padding:0.55rem 0.7rem;letter-spacing:0.2em}
-  .bc span{display:none}
-  .ms{padding:0}
-  .bn{width:36px;height:36px}
-  .bp{left:0.4rem}.bx{right:0.4rem}
-  .md{padding:0.9rem 0 1rem}
-}
-@media(max-width:768px) and (orientation:portrait){.modal.full .rh{display:flex;animation:rhFade 3.2s forwards}}
 
 /* Consulta do projeto — SIMIA */
 .simia-launch{position:fixed;left:28px;bottom:22px;z-index:40;display:flex;align-items:center;gap:12px;padding:15px 20px;background:#18130c;border:1px solid #C9A96E;border-radius:50px;color:#F0EDE6;font:400 12px Montserrat,sans-serif;cursor:pointer;box-shadow:0 8px 32px #0008}.simia-launch span:first-child{color:#C9A96E;font-size:20px}.simia-launch small{display:block;font-size:8px;letter-spacing:.14em;color:#C9A96E;margin-bottom:4px;text-align:left}.simia-launch:focus-visible,.simia-dialog button:focus-visible{outline:2px solid #C9A96E;outline-offset:4px}.simia-dialog{position:fixed;inset:0;margin:auto;width:min(560px,calc(100vw - 28px));max-height:88dvh;border:1px solid #7e663c;border-radius:18px;background:#14110d;color:#F0EDE6;padding:0;box-shadow:0 30px 100px #000b;font-family:Montserrat,sans-serif}.simia-dialog::backdrop{background:#000b;backdrop-filter:blur(6px)}.simia-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid #C9A96E33;padding:22px 25px}.simia-top small{display:block;color:#C9A96E;letter-spacing:.2em;font-size:8px;margin-bottom:7px}.simia-top h2{font:300 27px 'Cormorant Garamond',serif}.simia-close{background:transparent;border:0;color:#F0EDE6;font-size:25px;padding:4px 8px;cursor:pointer}.simia-body{padding:25px;overflow:auto;max-height:calc(88dvh - 105px)}.simia-body p{font-size:13px;line-height:1.8;margin-bottom:16px}.simia-body label{display:block;font-size:10px;letter-spacing:.1em;color:#C9A96E;margin-bottom:12px}.simia-body textarea{display:block;width:100%;min-height:110px;border:1px solid #C9A96E55;border-radius:10px;background:#ffffff08;color:#F0EDE6;padding:15px;font:400 14px/1.6 Montserrat,sans-serif;resize:vertical}.simia-body textarea:focus{outline:1px solid #C9A96E}.simia-send,.simia-again{padding:13px 18px;background:#C9A96E;color:#17120b;border:0;border-radius:8px;font:400 12px Montserrat,sans-serif;cursor:pointer;margin-top:15px}.simia-body button:disabled{opacity:.6;cursor:wait}.simia-examples{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}.simia-examples button{border:1px solid #C9A96E33;border-radius:25px;padding:9px 12px;color:#c6b595;background:transparent;font:400 10px Montserrat,sans-serif;cursor:pointer}.simia-question{color:#b3a590;font-size:12px!important;padding-bottom:15px;border-bottom:1px solid #C9A96E33}.simia-answer p{font-size:14px}.simia-answer p:first-child{font-size:20px;line-height:1.5}.simia-answer strong{font-weight:500;color:#e5c68d}.simia-answer ul{list-style:none;display:grid;gap:9px;margin:15px 0;padding:0}.simia-answer li{font-size:13px;line-height:1.7;padding:12px 15px;border-left:2px solid #C9A96E;background:#C9A96E0c;border-radius:0 7px 7px 0}.simia-note{font-size:9px!important;color:#9e9587;line-height:1.8!important;margin-top:24px!important;margin-bottom:0!important}.simia-error{color:#e9b98e}.simia-online{display:inline-block;color:#e5c68d;border-bottom:1px solid #C9A96E;padding:6px 0;font-size:13px}.simia-dialog [hidden]{display:none!important}@media(max-width:600px){.simia-launch{left:14px;bottom:14px;padding:12px 16px}.simia-launch small{font-size:7px}.simia-top,.simia-body{padding:20px}}
@@ -167,7 +163,7 @@ header{display:flex;align-items:flex-start;justify-content:space-between;opacity
   <div class="main">
     <header>
       <img class="logo-img" src="imagens/imagem-02.png" alt="SIM Arquitetura Executiva">
-      <div class="hr"><div class="hy">2026</div><div class="hc">Responsáveis pelo Projeto<strong>Silvia Moura</strong><strong>Andressa Murta</strong></div><div class="hw"><a class="site-link" href="https://simarquitetura.com.br/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/></svg>simarquitetura.com.br</a></div></div>
+      <div class="hr"><div class="hy">2026</div><div class="hc">Responsáveis pelo Projeto<strong>Silvia Moura</strong><strong>Andressa Murta</strong></div></div>
     </header>
     <div class="hero">
       <p class="ey">Apresentação de Projeto · 2026</p>
@@ -194,39 +190,27 @@ header{display:flex;align-items:flex-start;justify-content:space-between;opacity
     <div class="sb-header">
       <div class="sb-label">Documentos do Projeto</div>
       <div class="sb-title">Edifício <em>Amazonas</em></div>
-      <a class="sb-art" href="https://drive.google.com/drive/folders/13ZrhP8rPOhZQttVwhHtA-pmSWSsoIzFP?usp=drive_link" target="_blank" rel="noopener">
-        <span class="sb-art-ic"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5"/><line x1="3.5" y1="10" x2="20.5" y2="10"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/><polyline points="8.5 15 11 17.3 15.5 13"/></svg></span>
-        <span class="sb-art-tx"><span class="sb-art-t sm">PLANEJAMENTO DE OBRA</span><span class="sb-art-s">Cronograma · Acessar</span></span>
-      </a>
-      <a class="sb-art" href="https://drive.google.com/drive/folders/19qdypmxTTLQQAgo9q7auLAkXosKhdXF-?usp=drive_link" target="_blank" rel="noopener">
-        <span class="sb-art-ic"><svg viewBox="0 0 24 24"><path d="M12 3v12"/><polyline points="7 10 12 15 17 10"/><line x1="5" y1="20" x2="19" y2="20"/></svg></span>
-        <span class="sb-art-tx"><span class="sb-art-t">ART</span><span class="sb-art-s">Anotação de Resp. Técnica · Baixar</span></span>
-      </a>
     </div>
     <div class="sb-docs" id="sbDocs"></div>
-    <div class="sb-footer"><a class="site-link" href="https://simarquitetura.com.br/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/></svg>simarquitetura.com.br</a><br>SIM Arquitetura Executiva · 2026</div>
+    <div class="sb-footer">SIM Arquitetura Executiva · 2026</div>
   </div>
 
   </div>
 <div class="modal" id="modal">
   <div class="mb">
     <div class="mbl"><img class="ml" src="imagens/imagem-02.png" alt="SIM"><div class="mt">Edifício <em id="mt2"></em></div></div>
-    <div style="display:flex;align-items:center;gap:1.5rem"><span class="mc" id="mc2"></span><button class="bc bf" onclick="toggleFull()" title="Tela cheia (F)"><svg viewBox="0 0 24 24"><polyline points="4 9 4 4 9 4"/><polyline points="20 9 20 4 15 4"/><polyline points="4 15 4 20 9 20"/><polyline points="20 15 20 20 15 20"/></svg><span>Tela cheia</span></button><button class="bc" onclick="closeGallery()"><svg viewBox="0 0 12 12"><line x1="1" y1="1" x2="11" y2="11"/><line x1="11" y1="1" x2="1" y2="11"/></svg><span>Fechar</span></button></div>
+    <div style="display:flex;align-items:center;gap:1.5rem"><span class="mc" id="mc2"></span><button class="bc" onclick="closeGallery()"><svg viewBox="0 0 12 12"><line x1="1" y1="1" x2="11" y2="11"/><line x1="11" y1="1" x2="1" y2="11"/></svg>Fechar</button></div>
   </div>
   <div class="ms">
     <button class="bn bp" onclick="nav(-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
     <img class="mi" id="mi2" src="" alt="">
-    <button class="fx" onclick="toggleFull(false)" title="Sair da tela cheia"><svg viewBox="0 0 24 24"><polyline points="9 4 9 9 4 9"/><polyline points="15 4 15 9 20 9"/><polyline points="9 20 9 15 4 15"/><polyline points="15 20 15 15 20 15"/></svg></button>
-    <div class="fc" id="fc2"></div>
-    <div class="rh"><svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="1.5"/><path d="M3 14a9 9 0 0 0 6 7"/><polyline points="6 21.5 9 21 8.4 18"/></svg>Gire o celular<br>para ampliar</div>
     <button class="bn bx" onclick="nav(1)"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
   </div>
   <div class="md" id="md2"></div>
-  <div class="mhint">Toque na imagem para tela cheia · Pinça ou toque duplo para zoom</div>
 </div>
 <script>
 const NOMES={"fachada":"Fachada","entrada-func":"Entrada Funcionários","garagem":"Garagem","recepcao":"Recepção","portaria":"Portaria","almoxarife":"Almoxarifado","lobby":"Lobby","area-verde":"Área Verde","hall-principal":"Hall Principal","hall-elev-soc":"Hall Elev. Social","hall-elev-serv":"Hall Elev. Serviço"};
-const GALS={"fachada":["imagens/imagem-14.jpg","imagens/imagem-15.jpg"],"entrada-func":["imagens/imagem-16.jpg","imagens/imagem-17.jpg"],"garagem":["imagens/imagem-18.jpg"],"recepcao":["imagens/imagem-19.jpg","imagens/imagem-20.jpg"],"portaria":["imagens/imagem-21.jpg","imagens/imagem-22.jpg"],"almoxarife":["imagens/imagem-23.jpg"],"lobby":["imagens/imagem-24.jpg","imagens/imagem-25.jpg"],"area-verde":["imagens/imagem-26.jpg","imagens/imagem-27.jpg"],"hall-principal":["imagens/imagem-28.jpg","imagens/imagem-29.jpg"],"hall-elev-soc":["imagens/imagem-30.jpg","imagens/imagem-31.jpg"],"hall-elev-serv":["imagens/imagem-32.jpg","imagens/imagem-33.jpg"]};
+const GALS={"fachada":["imagens/imagem-14.jpg","imagens/apresentacao-nova-16.jpg"],"entrada-func":["imagens/imagem-16.jpg","imagens/apresentacao-nova-18.jpg"],"garagem":["imagens/imagem-18.jpg"],"recepcao":["imagens/imagem-19.jpg","imagens/apresentacao-nova-21.jpg"],"portaria":["imagens/imagem-21.jpg","imagens/apresentacao-nova-23.jpg"],"almoxarife":["imagens/imagem-23.jpg"],"lobby":["imagens/imagem-24.jpg","imagens/apresentacao-nova-26.jpg"],"area-verde":["imagens/imagem-26.jpg","imagens/apresentacao-nova-28.jpg"],"hall-principal":["imagens/imagem-28.jpg","imagens/apresentacao-nova-30.jpg"],"hall-elev-soc":["imagens/imagem-30.jpg","imagens/apresentacao-nova-32.jpg"],"hall-elev-serv":["imagens/imagem-32.jpg","imagens/apresentacao-nova-34.jpg"]};
 let cur='',idx=0;
 function openGallery(k){const imgs=GALS[k];if(!imgs||!imgs.length)return;cur=k;idx=0;document.getElementById('mt2').textContent=NOMES[k]||k;buildDots(imgs.length);show(0);document.getElementById('modal').classList.add('active');document.body.style.overflow='hidden';}
 function closeGallery(){document.getElementById('modal').classList.remove('active');document.body.style.overflow='';}
@@ -247,58 +231,6 @@ const DOCS=[
 const sb=document.getElementById('sbDocs');
 if(sb){DOCS.forEach(d=>{sb.innerHTML+=`<div class="doc-item"><span class="doc-num">${d.num}</span><span class="doc-name">${d.nome}</span><div class="doc-btns"><a class="doc-btn" href="${d.view}" target="_blank"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/></svg>Ver no Drive</a></div></div>`;});}
 </script>
-<script>
-(function(){
-const M=document.getElementById('modal'),IM=document.getElementById('mi2'),ST=document.querySelector('.ms'),FC=document.getElementById('fc2');
-let z=1,tx=0,ty=0,pinch=null,pan=null,moved=false,lastTap=0,tapT=null;
-function clampPan(){const mx=IM.clientWidth*(z-1)/2,my=IM.clientHeight*(z-1)/2;tx=Math.max(-mx,Math.min(mx,tx));ty=Math.max(-my,Math.min(my,ty));}
-function applyZ(anim){IM.style.transition=anim?'':'none';IM.style.transform=z>1?`translate(${tx}px,${ty}px) scale(${z})`:'';}
-window.resetZoom=function(){z=1;tx=0;ty=0;applyZ(true);};
-window.toggleFull=function(force){
-  const on=force!==undefined?force:!M.classList.contains('full');
-  M.classList.toggle('full',on);
-  try{
-    if(on&&!document.fullscreenElement&&M.requestFullscreen)M.requestFullscreen().catch(()=>{});
-    else if(on&&M.webkitRequestFullscreen&&!document.webkitFullscreenElement)M.webkitRequestFullscreen();
-    else if(!on&&document.fullscreenElement)document.exitFullscreen().catch(()=>{});
-  }catch(e){}
-  resetZoom();
-};
-document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&M.classList.contains('full')){M.classList.remove('full');resetZoom();}});
-const _show=show;show=function(i){resetZoom();_show(i);FC.textContent=(i+1)+' / '+GALS[cur].length;};
-const _close=closeGallery;closeGallery=function(){toggleFull(false);_close();};
-document.addEventListener('keydown',e=>{if(M.classList.contains('active')&&(e.key==='f'||e.key==='F'))toggleFull();});
-const dist=t=>Math.hypot(t[0].clientX-t[1].clientX,t[0].clientY-t[1].clientY);
-ST.addEventListener('touchstart',e=>{
-  if(e.target.closest('.bn,.fx'))return;
-  if(e.touches.length===2){pinch={d:dist(e.touches),z:z};pan=null;moved=true;}
-  else if(e.touches.length===1){const t=e.touches[0];pan={x:t.clientX,y:t.clientY,tx:tx,ty:ty};moved=false;}
-},{passive:true});
-ST.addEventListener('touchmove',e=>{
-  if(e.target.closest('.bn,.fx'))return;
-  e.preventDefault();
-  if(e.touches.length===2&&pinch){z=Math.max(1,Math.min(4,pinch.z*dist(e.touches)/pinch.d));clampPan();applyZ(false);}
-  else if(e.touches.length===1&&pan){const t=e.touches[0],dx=t.clientX-pan.x,dy=t.clientY-pan.y;
-    if(Math.abs(dx)>8||Math.abs(dy)>8)moved=true;
-    if(z>1){tx=pan.tx+dx;ty=pan.ty+dy;clampPan();applyZ(false);}}
-},{passive:false});
-ST.addEventListener('touchend',e=>{
-  if(e.target.closest('.bn,.fx'))return;
-  if(pinch){if(e.touches.length<2){pinch=null;if(z<1.05)resetZoom();
-      if(e.touches.length===1){const t=e.touches[0];pan={x:t.clientX,y:t.clientY,tx:tx,ty:ty};}}
-    return;}
-  if(!pan||e.touches.length)return;
-  const t=e.changedTouches[0],dx=t.clientX-pan.x,dy=t.clientY-pan.y;pan=null;
-  if(z===1&&Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)){nav(dx<0?1:-1);return;}
-  if(moved)return;
-  const now=Date.now();
-  if(now-lastTap<300){clearTimeout(tapT);lastTap=0;
-    if(z>1)resetZoom();else{z=2.5;const r=IM.getBoundingClientRect();tx=(r.left+r.width/2-t.clientX)*(z-1);ty=(r.top+r.height/2-t.clientY)*(z-1);clampPan();applyZ(true);}
-  }else{lastTap=now;tapT=setTimeout(()=>{if(z===1)toggleFull();},300);}
-});
-IM.addEventListener('dblclick',()=>toggleFull());
-})();
-</script>
 
 <button class="simia-launch" id="simia-launch" type="button" aria-haspopup="dialog" aria-controls="simia-dialog"><span aria-hidden="true">✦</span><span><small>ASSISTENTE DO PROJETO</small>Tire suas dúvidas</span></button>
 <dialog class="simia-dialog" id="simia-dialog" aria-labelledby="simia-title">
@@ -310,8 +242,8 @@ IM.addEventListener('dblclick',()=>toggleFull());
   </div>
   <div id="simia-result" hidden><p class="simia-question" id="simia-question"></p><div class="simia-answer" id="simia-answer" aria-live="polite"></div><button class="simia-again" id="simia-again" type="button">Fazer outra pergunta ↗</button></div>
   <p class="simia-error" id="simia-error" role="alert" hidden></p>
-  <div id="simia-fallback" hidden><p>Para conversar com o assistente, abra a versão online desta apresentação.</p><a class="simia-online" href="http://sistema.simarquitetura.com.br/amazonas/" target="_blank" rel="noopener noreferrer">Abrir apresentação com assistente ↗</a></div>
-  <p class="simia-note">Uma consulta por vez, sem histórico na tela. Para ver a origem, inclua “mostre a fonte” na pergunta. Alterações, custos e prazos dependem dos responsáveis. </p>
+  <div id="simia-fallback" hidden><p>Para conversar com o assistente, abra a versão online desta apresentação.</p><a class="simia-online" href="https://amazonas-consulta-projeto.sacmoura.chatgpt.site/apresentacao.html" target="_blank" rel="noopener noreferrer">Abrir apresentação com assistente ↗</a></div>
+  <p class="simia-note">Uma consulta por vez, sem histórico na tela. Para ver a origem, inclua “mostre a fonte” na pergunta. Alterações, custos e prazos dependem dos responsáveis. Versão privada de validação.</p>
  </div>
 </dialog>
 
@@ -319,12 +251,12 @@ IM.addEventListener('dblclick',()=>toggleFull());
 (()=>{
  const $=id=>document.getElementById('simia-'+id);
  const dialog=$('dialog'),form=$('form'),input=$('input');let busy=false,controller=null;
- const sameHost=location.protocol==='https:'||location.protocol==='http:';
+ const sameHost=location.hostname==='amazonas-consulta-projeto.sacmoura.chatgpt.site'||location.hostname==='terminal.local'||location.hostname==='localhost';
  function reset(){if(controller)controller.abort();controller=null;busy=false;form.reset();$('entry').hidden=!sameHost;$('fallback').hidden=sameHost;$('result').hidden=true;$('answer').replaceChildren();$('question').textContent='';$('error').hidden=true;setBusy(false);}
  function setBusy(value){busy=value;input.disabled=value;$('send').disabled=value;$('send').textContent=value?'Preparando resposta…':'Perguntar ↗';document.querySelectorAll('[data-simia]').forEach(b=>b.disabled=value);}
  function inline(el,text){text.split(/(\*\*[^*\n]+\*\*)/g).forEach(part=>{if(part.startsWith('**')&&part.endsWith('**')){const b=document.createElement('strong');b.textContent=part.slice(2,-2);el.append(b);}else el.append(document.createTextNode(part));});}
  function render(text){const root=$('answer');root.replaceChildren();let para=null,list=null;for(const raw of text.split(/\r?\n/)){const line=raw.trim();if(!line){para=null;list=null;continue;}const m=line.match(/^(?:[-*•]|\d+[.)])\s+(.+)$/);if(m){para=null;if(!list){list=document.createElement('ul');root.append(list);}const li=document.createElement('li');inline(li,m[1]);list.append(li);}else{list=null;if(!para){para=document.createElement('p');root.append(para);}else para.append(' ');inline(para,line);}}}
- async function ask(q){if(busy||!q.trim())return;setBusy(true);$('error').hidden=true;input.value=q;const active=new AbortController();controller=active;try{const r=await fetch('https://amazonas-atendimento-moradores.sacmoura.chatgpt.site/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},cache:'no-store',signal:active.signal,body:JSON.stringify({question:q})});if((r.headers.get('content-type')||'').indexOf('application/json')<0)throw Error('Entre novamente na apresentação para usar o assistente.');const data=await r.json();if(!r.ok)throw Error(data.error||'Não foi possível responder agora.');if(controller!==active)return;$('entry').hidden=true;$('question').textContent=q;render(data.answer);$('result').hidden=false;$('again').focus();}catch(e){if(e.name==='AbortError')return;$('error').textContent=e.message||'Não foi possível consultar. Tente novamente.';$('error').hidden=false;}finally{if(controller===active){controller=null;setBusy(false);}}}
+ async function ask(q){if(busy||!q.trim())return;setBusy(true);$('error').hidden=true;input.value=q;const active=new AbortController();controller=active;try{const r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},cache:'no-store',signal:active.signal,body:JSON.stringify({question:q})});if((r.headers.get('content-type')||'').indexOf('application/json')<0)throw Error('Entre novamente na apresentação para usar o assistente.');const data=await r.json();if(!r.ok)throw Error(data.error||'Não foi possível responder agora.');if(controller!==active)return;$('entry').hidden=true;$('question').textContent=q;render(data.answer);$('result').hidden=false;$('again').focus();}catch(e){if(e.name==='AbortError')return;$('error').textContent=e.message||'Não foi possível consultar. Tente novamente.';$('error').hidden=false;}finally{if(controller===active){controller=null;setBusy(false);}}}
  $('launch').addEventListener('click',()=>{reset();dialog.showModal();if(sameHost)input.focus();});
  $('close').addEventListener('click',()=>dialog.close());dialog.addEventListener('close',reset);
  dialog.addEventListener('keydown',e=>e.stopPropagation());
@@ -333,5 +265,20 @@ IM.addEventListener('dblclick',()=>toggleFull());
  document.querySelectorAll('[data-simia]').forEach(b=>b.addEventListener('click',()=>ask(b.dataset.simia)));
 })();
 </script>
+
+<!-- Botão flutuante WhatsApp -->
+<style>
+.whatsapp-fab{position:fixed;bottom:2rem;right:calc(var(--sidebar) + 1.2rem);z-index:999;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.whatsapp-fab a{display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,rgba(10,9,6,0.95),rgba(30,20,10,0.95));border:0.5px solid var(--gold);color:var(--gold);text-decoration:none;padding:0.65rem 1.1rem 0.65rem 0.9rem;border-radius:30px;font-family:'Montserrat',sans-serif;font-weight:300;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;backdrop-filter:blur(12px);box-shadow:0 4px 24px rgba(0,0,0,0.5),0 0 0 0 rgba(201,169,110,0.4);transition:all 0.4s;white-space:nowrap;animation:fabPulse 3s ease-in-out infinite}
+.whatsapp-fab a:hover{background:linear-gradient(135deg,rgba(201,169,110,0.15),rgba(201,169,110,0.08));box-shadow:0 6px 32px rgba(0,0,0,0.6),0 0 20px rgba(201,169,110,0.2);transform:translateY(-2px);letter-spacing:0.38em}
+.whatsapp-fab svg{width:17px;height:17px;fill:var(--gold);flex-shrink:0}
+@keyframes fabPulse{0%,100%{box-shadow:0 4px 24px rgba(0,0,0,0.5),0 0 0 0 rgba(201,169,110,0.35)}50%{box-shadow:0 4px 24px rgba(0,0,0,0.5),0 0 0 7px rgba(201,169,110,0)}}
+</style>
+<div class="whatsapp-fab">
+  <a href="https://wa.me/5599991464343?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20SIM%20Arquitetura." target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+    Contrate Nossos Serviços
+  </a>
+</div>
 </body>
 </html>
